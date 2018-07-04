@@ -1,16 +1,12 @@
 // Array holding all cards in deck
- let cards = ['fa-diamond', 'fa-diamond',
-              'fa-paper-plane-o', 'fa-paper-plane-o',
-              'fa-anchor', 'fa-anchor',
-              'fa-bolt', 'fa-bolt',
-              'fa-cube', 'fa-cube',
-              'fa-leaf', 'fa-leaf',
-              'fa-bicycle', 'fa-bicycle',
-              'fa-bomb', 'fa-bomb'];
+const cardList = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt',
+                'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb'];
+
+const cards = cardList.concat(cardList);
 
 // Array to hold open and matched cards
-let openCards = [];
-let matchedCards = [];
+const openCards = [];
+const matchedCards = [];
 
 // Global variables
 let time;
@@ -23,7 +19,7 @@ let numMoves = 0;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -80,6 +76,12 @@ function noMatch(cardA, cardB) {
 // Clear array of open cards
 function clearOpenCards() {
     openCards.length = 0;
+}
+
+
+// Clear array of matched cards
+function clearMatchedCards() {
+    matchedCards.length = 0;
 }
 
 
@@ -188,8 +190,8 @@ function restart () {
     numMoves = 0;
     sec = 0;
     min = 0;
-    time = "";
-    matchedCards.length = 0;
+    stopTime();
+    clearMatchedCards();
     clearOpenCards();
     resetMoveCounter();
     addStars();
